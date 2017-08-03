@@ -10,10 +10,7 @@ app.config(function($routeProvider) {
 	}).when('/add', {
 		templateUrl : 'p_pages/add.html',
 		controller : 'personController'
-	}).when('/editStudentpd', {
-		templateUrl : 'e_personal/editStudentpd.html',
-		controller : 'editController'
-		})
+	})
 
 	.otherwise({
 		redirectTo : '/'

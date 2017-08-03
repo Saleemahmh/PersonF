@@ -2,13 +2,15 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Person</title>
 </head>
 <style>
-.panel
+
+ .panel
         {
           margin: 5%;
           background: transparent;
+          
         }
 
 
@@ -31,30 +33,20 @@
           transition: 0.8s;
           background-color: #428bca;
           border-color: #428bca;
-        }
+        } 
 
-        .panel-footer
-        {
-          background-color: #5bc0de;
-          color: white;
-        }
+   
 </style>
 <body>
-
-
-
-
-
+<br><br><br>
 <div class="container-fluid">
     <div class="panel panel-success">
       <div class="panel-heading">
         <h2>List of Persons</h2>
       </div>
-      
-
-      <div class="panel-body table-responsive">
+       <div class="panel-body table-responsive">
         <table class="table table-hover">
-        <a href="#/add" class="btn btn-primary btn-xs pull-right"> Add new Person</a>
+        <a href="#/add" class="btn btn-primary btn-lg pull-right"> Add new Person</a>
           <thead>
             <tr>
               <th class="text-center"> ID </th>
@@ -71,36 +63,35 @@
     <td class="text-center">{{ person.name }}</td>
     <td class="text-center">{{ person.age }}</td>
     <td class="text-center">{{ person.city }}</td>
-    <td><button type="button" data-toggle="modal"  data-target="#edit" data-uid="2" class="update btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span></button></td>
-	<td><button type="button" data-toggle="modal" ng-click="deletePerson(person.id)" data-target="#delete" data-uid="2" class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button></td>
-    <!-- <td class="text-center"><a href="#/home" ><i class="glyphicon glyphicon-pencil"></i></a>
-              <a href="#/home" ng-click="deletePerson(person.id)" ><i class="glyphicon glyphicon-trash"></i></a></td> -->
+    <td class="text-center"><button type="button" data-toggle="modal"  data-target="#edit" data-uid="2" class="update btn btn-warning btn-sm" data-ng-click="updatePersonLog(person)"><span class="glyphicon glyphicon-pencil"></span></button></td>
+	<td class="text-center"><button type="button" data-toggle="modal"  data-target="#delete" data-uid="2" class="delete btn btn-danger btn-sm" data-ng-click="deletePerson(person.id)"><span class="glyphicon glyphicon-trash"></span></button></td>
+   
   </tr>
-
-
-
+ 
+  </table>
+</div>
+</div>
 
 <div id="edit" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h4 class="modal-title">Update Data</h4>
-      </div>
-      <div class="modal-body">
-      		{{person.id}}
-           <input data-ng-model="person.name" type="text" class="form-control"  >
-           <input data-ng-model="person.age" type="text" class="form-control"  >
-           <input data-ng-model="person.city" type="text" class="form-control">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-warning" ng-click="updatePerson(person.id)" data-dismiss="modal">Update</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4 class="modal-title">Update Data</h4>
+        </div>
+        <div class="modal-body">
+          {{personUpdate.id}}
+          <input data-ng-model="personUpdate.name" type="text" class="form-control"  >
+          <input data-ng-model="personUpdate.age" type="text" class="form-control"  >
+          <input data-ng-model="personUpdate.city" type="text" class="form-control">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" ng-click="updatePerson(personUpdate.id)" data-dismiss="modal">Update</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
   <div id="delete" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -120,7 +111,7 @@
 </div>
   
  
+ </div> 
   
-  </table>
 </body>
 </html>

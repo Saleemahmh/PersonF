@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -7,46 +7,43 @@
 <body>
 	<div class="generic-container">
 
-		
+
 		<div class="container" style="margin-bottom: 19px">
 			<h1 class="well">Add Person Details !</h1>
 			<div class="col-lg-12 well">
 				<div class="row">
 
-					<!--  RegisterServlet  form -->
+					 RegisterServlet  form
 					<form data-ng-submit="submit()" name="myForm">
 						<div class="col-sm-12">
+
 							<div class="row">
 
 								<div class="col-sm-12 form-group">
-									<label> ID</label> {{person.id}}
+									<label>Name</label> <input type="text"
+										data-ng-model="person.name" placeholder="Name"
+										class="form-control" required>{{person.name}}
 								</div>
 							</div>
 
 							<div class="row">
 
 								<div class="col-sm-12 form-group">
-									<label>Name</label> <input type="text" data-ng-model="person.name"
-										placeholder="Name" class="form-control" required>{{person.name}}
+									<label>Age</label> <input type="text"
+										data-ng-model="person.age" placeholder="Person Age"
+										class="form-control" required>{{person.age}}
 								</div>
 							</div>
-														
+
 							<div class="row">
 
 								<div class="col-sm-12 form-group">
-									<label>Age</label> <input type="text" data-ng-model="person.age"
-										placeholder="Person Age" class="form-control" required>{{person.age}}
+									<label>City</label> <input type="text"
+										data-ng-model="person.city" placeholder="Student Parent Name"
+										class="form-control" required>{{person.city}}
 								</div>
 							</div>
-							
-							<div class="row">
 
-								<div class="col-sm-12 form-group">
-									<label>City</label> <input type="text" data-ng-model="person.city"
-										placeholder="Student Parent Name" class="form-control" required>{{person.city}}
-								</div>
-							</div>
-							
 							<hr>
 							<div>
 
@@ -54,7 +51,7 @@
 								<div class="form-actions" style="text-align: center;">
 
 									<button type="submit" class="btn btn-primary btn-info"
-										style="text-align:center;">Submit</button>
+										style="text-align: center;">Submit</button>
 									<button type="button" class="btn btn-warning btn-info"
 										style="text-align: center;" data-ng-click="reset()">Reset
 									</button>
@@ -67,6 +64,125 @@
 			</div>
 		</div>
 	</div>
-	
+
+</body>
+</html> -->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+	rel="stylesheet">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<style>
+body {
+	background:
+		url('http://www.powerpointhintergrund.com/uploads/2017/07/light-pink-background-light-pink-backgrounds-light-pink-gradient--29.jpeg');
+		
+	background-color: none;
+	font: oblique;
+	size: 18;
+	font-family: 'Didot-Italic';
+	font-style: italic;
+	color: #B22222;
+	text-align: center;
+}
+
+
+* {
+	color: white;
+}
+
+.form-signin {
+	max-width: 280px;
+	padding: 15px;
+	margin: 100px;
+	margin-top: 10px;
+}
+
+.input-group-addon {
+	background-color: rgb(50, 118, 177);
+	border-color: rgb(40, 94, 142);
+	color: rgb(255, 255, 255);
+}
+
+.form-control:focus {
+	background-color: rgb(50, 118, 177);
+	border-color: rgb(40, 94, 142);
+	color: rgb(255, 255, 255);
+}
+
+.well-default {
+	opacity: 0.8;
+	/*margin-top:30px;*/
+}
+</style>
+<body>
+
+
+	<form  name="myForm">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="well well-default">
+						<div class="well-body">
+							<h3 class="text-center" style="color: black;">ADD PERSON</h3>
+
+							<div class="form-group">
+								<div class="input-group">
+									<span class="input-group-addon"><span
+										class="glyphicon glyphicon-user" style="color: black;"></span>
+									</span> <input type="text" data-ng-model="person.name"
+										placeholder="Name" class="form-control" required>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="input-group">
+									<span class="input-group-addon"><span
+										class="glyphicon glyphicon-pencil" style="color: black;"></span></span>
+									<input type="text" data-ng-model="person.age"
+										placeholder="Person Age" class="form-control" required>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="input-group">
+									<span class="input-group-addon"><span
+										class="glyphicon glyphicon-home" style="color: black;"></span></span>
+									<input type="text" data-ng-model="person.city"
+										placeholder="Person City" class="form-control" required>
+								</div>
+							</div>
+
+							<div class="form-actions" style="text-align: center;">
+
+								<button type="submit" class="btn btn-primary btn-info"
+									style="text-align: center;" data-ng-click="createPerson()">Submit</button>
+								<button type="button" class="btn btn-warning btn-info"
+									style="text-align: center;" data-ng-click="reset()">Reset
+								</button>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</form>
+
 </body>
 </html>

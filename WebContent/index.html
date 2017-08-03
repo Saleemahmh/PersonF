@@ -22,7 +22,8 @@
 	href="http://www.w3schools.com/lib/w3-theme-blue-grey.css">
 <link rel='stylesheet'
 	href="https://fonts.googleapis.com/css?family=Open+Sans">
-<link rel="stylesheet" href="p_resources/assets/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="p_resources/assets/css/font-awesome.min.css">
 <link
 	href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700"
 	rel="stylesheet" type="text/css" />
@@ -30,37 +31,41 @@
 	type="text/css">
 
 <style>
-/* Set black background color, white text and some padding */
-footer {
-	background-color: #0f0f0f;
-	color: white;
-	padding: 15px;
-}
 li {
 	display: inline;
 }
+
+body {
+	background:
+		url('http://www.powerpointhintergrund.com/uploads/2017/07/light-pink-background-light-pink-backgrounds-light-pink-gradient--29.jpeg');
+		
+	background-color: none;
+	font: oblique;
+	size: 18;
+	font-family: 'Didot-Italic';
+	font-style: italic;
+	color: #B22222;
+	text-align: center;
+}
+
+.panel-default {
+	background: transparent !important;
+	border: transparent !important;
+	/* font-family: 'Didot-Italic'; */
+	font-style: italic;
+	font-size: 20px;
+}
+
+
 </style>
 </head>
 <body class="w3-theme-l5" data-ng-app="myApp"
 	data-ng-controller="personController">
-	
+<br><br><br><br>
+
 	<div data-ng-include src="p_pages/home.html"></div>
 	
-
-	
-
-	<hr>
-	<!-- end title -->
-
-	<!-- 	middle view -->
-
-	<div data-ng-view="">
-	
-	</div>
-
-	<!-- End Middle View -->
-
-	
+	<div data-ng-view=""></div>
 
 	<!-- 	Angular Script -->
 	<script type="text/javascript"
@@ -69,11 +74,11 @@ li {
 		src="p_resources/assets/js/angular-route.min.js"></script>
 	<script type="text/javascript"
 		src="p_resources/assets/js/angular-cookies.min.js"></script>
-	
+
 	<script type="text/javascript" src="app.js"></script>
 	<script type="text/javascript" src="p_person/personController.js"></script>
 	<script type="text/javascript" src="p_person/personService.js"></script>
-	
+
 	<!-- 	End AngularScript -->
 </body>
 </html>

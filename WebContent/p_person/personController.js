@@ -1,16 +1,23 @@
 /**
  * 
  */
-app.controller('personController', function($scope,$rootScope, personService, $location) {
+app.controller('personController', function($scope, personService, $window,
+		$location) {
 	console.log('entering person controller')
 
-	$rootScope.person = {
+	$scope.person = {
 		id : '',
 		name : '',
 		age : '',
-		city : ''	
+		city : ''
 	};
 
+	$scope.personUpdate = {
+		id : '',
+		name : '',
+		age : '',
+		city : ''
+	};
 	$scope.persons;
 
 	function listAllPersons() {
@@ -24,56 +31,53 @@ app.controller('personController', function($scope,$rootScope, personService, $l
 	;
 	listAllPersons();
 
-	$scope.createPerson = function(person) {
+	$scope.createPerson = function() {
 		console.log('create Student...')
-		personService.createPerson(person).then(listAllPersons(),
-				function(errResponse) {
-					console.error('Error while Creating Student')
-				});
+		personService.createPerson($scope.person).then(function(data) {
+			console.log('reloading')
+			
+			$window.location.href= '#/';
+			listAllPersons();
+			$window.location.reload();
+
+		}, function(errResponse) {
+			console.error('Error while Creating Student')
+		});
 	};
 
 	$scope.updatePerson = function(id) {
 		console.log('entering  updatePerson in controller' + id)
-		personService.updatePerson(id, $rootScope.person).then(listAllPersons(),
-				function(errResponse) {
+		personService.updatePerson(id, $scope.personUpdate).then(
+				function(data) {
+					listAllPersons();
+				}, function(errResponse) {
 					console.error('Error while updating : ' + errResponse)
 				});
 	};
 
-/*	$scope.updatePerson = function() {
-		
-			console.log('updating', $scope.person.id)
-			$scope.updatePerson($scope.person.id,$scope.person);
-		
-	}*/
+	$scope.updatePersonLog = function(person) {
 
-	$scope.submit = function() {
-		{
-			console.log('saving Person' + $rootScope.person)
-			$scope.createPerson($rootScope.person);
-		}
-		$scope.reset();
-		$location.path("/add")
-	};
+		console.log('updating', person)
+		$scope.personUpdate = person;
+
+	}
 
 	$scope.deletePerson = function(id) {
 		console.log('entering deletePerson in controller id : ' + id)
 		personService.deletePerson(id).then(function() {
 			console.log('Deleted Successfully')
 			listAllPersons();
-
 		}, function() {
 			console.log('Unable to delete')
 		})
 	};
 
-
 	$scope.reset = function() {
-		$rootScope.person = {
-				id : 0,
-				name : '',
-				age : 0,
-				city : ''
+		$scope.person = {
+			id : '',
+			name : '',
+			age : '',
+			city : ''
 		};
 		$scope.myForm.$setPristine();
 	};

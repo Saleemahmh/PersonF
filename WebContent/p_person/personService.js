@@ -11,9 +11,9 @@ app.factory('personService', function($http) {
 		return $http.get(BASE_URL + "/persons").then(
 				function(response) {
 					return response.data
-				}, function(response) {
+				}, function(errorResponse) {
 					console.error('Error while getting all Persons')
-					return response.data
+					return errorResponse.data
 				});
 	};
 
@@ -22,17 +22,23 @@ app.factory('personService', function($http) {
 		return $http.post(BASE_URL + "/addperson", person).then(
 				function(response) {
 					return response.data
-				}, function(response) {
+				}, function(errorResponse) {
 					console.error('Error while Creating Persons')
-					return response.data
+					return errorResponse.data
 				});
 	};
 
-	personService. updatePerson = function(id, person) {
+	personService.updatePerson = function(id, person) {
 		console.log('entering update : ' + id)
 		console.log('entering update  :' + person)
 		console.log(BASE_URL + "/updateperson/", id, person)
-		return $http.put(BASE_URL + "/updateperson/" + id, person);
+		return $http.put(BASE_URL + "/updateperson/" + id, person).then(
+				function(response) {
+					return response.data
+				}, function(errorResponse) {
+					console.error('Error while Updating Persons')
+					return errorResponse.data
+				});
 	};
 
 	personService.deletePerson = function(id) {
@@ -40,15 +46,23 @@ app.factory('personService', function($http) {
 		return $http['delete'](BASE_URL + "/deleteperson/" + id).then(
 				function(response) {
 					console.log(response.status)
-					return response.status
-				}, function() {
-					console.log(response.status)
+					return response.data
+				}, function(errorResponse) {
+					console.log(errorResponse.status)
+					return errorResponse.data
 				})
 	};
 
 
 	personService.getPersonById = function(id) {
-		return $http.get(BASE_URL + "/person/" + id)
+		return $http.get(BASE_URL + "/person/" + id).then(
+				function(response) {
+					console.log(response.status)
+					return response.data
+				}, function(errorResponse) {
+					console.log(errorResponse.status)
+					return errorResponse.data
+				})
 	};
 
 	return personService;
