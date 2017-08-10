@@ -37,7 +37,7 @@ app.controller('personController', function($scope, personService, $window,
 			console.log('reloading')
 			$window.location.href = '#/';
 			listAllPersons();
-			$window.location.reload();
+			/*$window.location.reload();*/
 
 		}, function(errResponse) {
 			console.error('Error while Creating Student')
