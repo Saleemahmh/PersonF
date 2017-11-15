@@ -64,6 +64,16 @@ app.factory('personService', function($http) {
 					return errorResponse.data
 				})
 	};
+	personService.getSwaggerData= function(){
+		return $http.get(BASE_URL + "/swagger").then(
+			function(response){
+				console.log(response.status)
+				return response.data
+			},function(errorResponse){
+				console.log(errorResponse.status)
+				return errorResponse.data
+			})
+		};
 
 	return personService;
 

@@ -18,6 +18,12 @@ app.controller('personController', function($scope, personService, $window,
 		age : '',
 		city : ''
 	};
+	$scope.swaggerdata={
+
+		basePath:'',
+		host:'',
+		info:[]
+	}
 	$scope.persons;
 
 	function listAllPersons() {
@@ -29,7 +35,19 @@ app.controller('personController', function($scope, personService, $window,
 		});
 	}
 	;
+
 	listAllPersons();
+	$scope.getSwaggerData=function() {
+		personService.getSwaggerData().then(function(data) {
+			console.log('swagger file')
+			$scope.swaggerdata = data;
+			$scope.swaggerdata.info=data.info;
+		},function(error){
+			console.log('Error : ' +error)
+		});
+	};
+$scope.getSwaggerData();
+
 
 	$scope.createPerson = function() {
 		console.log('create Student...')
@@ -60,7 +78,7 @@ app.controller('personController', function($scope, personService, $window,
 		$scope.personUpdate = person;
 
 	}
-
+	
 	$scope.deletePerson = function(id) {
 		console.log('entering deletePerson in controller id : ' + id)
 		personService.deletePerson(id).then(function() {
